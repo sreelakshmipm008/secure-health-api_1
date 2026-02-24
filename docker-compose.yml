@@ -6,12 +6,12 @@ services:
       - KEYCLOAK_ADMIN=admin
       - KEYCLOAK_ADMIN_PASSWORD=admin
     ports:
-      - "8081:8081"
+      - "8083:8083"
     networks: [ appnet ]
   app:
     build: ./app
     environment:
-      - OIDC_ISSUER=http://keycloak:8081/realms/health
+      - OIDC_ISSUER=http://keycloak:8083/realms/health
       - OIDC_AUDIENCE=health-api
       - APP_DATA_KEY=/run/secrets/data_key
     secrets:
